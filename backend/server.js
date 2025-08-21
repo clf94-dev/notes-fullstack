@@ -9,7 +9,7 @@ app.use(express.json())
 const allowed = (process.env.CORS_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean)
 app.use(cors({origin: allowed.length ? allowed : true}));
 
-app.get('/', (_req, res) => res.send('Backend is running!'));
+app.use('/api', require('./routes'));
 
 
 const PORT = process.env.PORT || 5050;
