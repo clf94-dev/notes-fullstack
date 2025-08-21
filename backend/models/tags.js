@@ -5,7 +5,12 @@ const { sequelize } = require('.')
 module.exports = (sequelize, DataTypes) => {
     class Tag extends Model {
         static associate(models) {
-        // define association here
+            Tag.belongsToMany(models.User, {
+                through: 'UserTags',
+                foreignKey: 'tagId',
+                otherKey: 'userId',
+                as: 'users'
+            })
 
         }
     }
@@ -20,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING,
             allowNull: false,
             unique: true
+        },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Users',
+                key: 'id'
+            }
         }
     }, {
         sequelize,
