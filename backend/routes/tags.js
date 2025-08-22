@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
 const { Tag } = require('../models');
 
 router.get('/tags', async (req, res) => {
@@ -34,3 +33,5 @@ router.post('/tag', async (req, res) => {
         res.status(500).json({message: 'Internal server error'})
     }
 })
+
+module.exports = router;
