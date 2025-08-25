@@ -21,7 +21,7 @@ app.use('/auth',authRoutes)
 
 
 const api = require('express').Router();
-api.use('/users', usersRoutes);
+api.use('/user', usersRoutes);
 api.use('/notes', notesRoutes);
 api.use('/tags', tagsRoutes);
 app.use('/api',authMiddleware, api);

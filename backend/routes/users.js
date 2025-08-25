@@ -1,43 +1,52 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models');
+const db = require('../models');
+const bcrypt = require('bcryptjs')
 
-router.get('user/profile', async (req, res) => {
-    const userId = req.user.id;
+router.get('/profile', async (req, res) => {
+    const userId = req.user.userId;
 
     try {
-        const user = await User.findByPk(userId)
+        const user = await db.User.findByPk(userId, {
+            attributes: { exclude: ['password', 'createdAt', 'updatedAt'] }
+        })
         if (!user){
             res.status(404).json({message: 'User not found'})
         }
-        res.status(200).json(user, {
-            exclude: ['passowrd, createdAt', 'updatedAt']
-        })
+        res.status(200).json(user)
     } catch (error) {
         res.status(500).json({message: 'Interval server error' })
     }
 })
 
-router.post('user/reset-password', async (req, res) => {
+router.patch('/reset-password', async (req, res) => {
     const { oldPassword, newPassword, } = req.body;
-    const userId = req.user.id; // Assuming user ID is available in req.user
+    const userId = req.user.userId;
+
     try {
-        const user = await User.findByPk(userId)
+        const user = await db.User.findByPk(userId)
         if(!user){
             return res.status(404).json({message: 'User not found'})
         }
 
-        if(user.password !== oldPassword){
+        const isOldPasswordValid = await bcrypt.compare(String(oldPassword), user.password)
+         
+        if(!isOldPasswordValid){
             return res.status(400).json({message: 'Old password is incorrect'})
         }
-        if(user.password === newPassword){
+
+        const isSameNewPassord = await bcrypt.compare(String(newPassword), user.password)
+        if(isSameNewPassord){
             return res.status(400).json({message:'New password cannot be the same as the old password'})
         }
 
-        user.password = newPassword;
+        const hashedPassword = await bcrypt.hash(String(newPassword), 10);
+        
+        user.password = hashedPassword;
         await user.save();
         res.status(200).json({message: 'Password updated successfully'})
     } catch (error) {
+        console.log({error})
         res.status(500).json({message: 'Internal server error'})
     }
 

@@ -5,7 +5,6 @@ const db = require('../models');
 router.get('/', async (req, res) => {
     const userId = req.user.userId;
     try {
-        console.log('get /notes',{userId})
         const notes = await db.Note.findAll({
             where: {userId},
             include: [{
@@ -16,7 +15,7 @@ router.get('/', async (req, res) => {
                 through: { attributes: [] } // Exclude junction table attributes
             }]
         })
-        console.log({notes})
+
         res.status(200).json(notes)
     } catch (error) {
         console.error("GET /notes error:", error);
