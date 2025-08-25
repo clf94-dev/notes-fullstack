@@ -1,20 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const { User, Notes, Tags } = require('../models');
+const db = require('../models');
 
-router.get('/notes', async (req, res) => {
-    const userId = req.user.id;
+router.get('/', async (req, res) => {
+    const userId = req.user.userId;
     try {
-        const notes = await Notes.findAll({
+        console.log('get /notes',{userId})
+        const notes = await db.Note.findAll({
             where: {userId},
             include: [{
-                model: Tags,
+                model: db.Tag,
                 as: 'tags',
-                attributes: ['id', 'name']
+                attributes: ['id', 'name'],
+                required: true, 
+                through: { attributes: [] } // Exclude junction table attributes
             }]
         })
+        console.log({notes})
         res.status(200).json(notes)
     } catch (error) {
+        console.error("GET /notes error:", error);
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -24,17 +29,17 @@ router.post('/note', async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const note = await Notes.create({
+        const note = await db.Note.create({
             title, 
             content, 
             tags, 
             userId
         })
         if (tags && tags.length > 0) {
-            const tagInstances = await Tags.findAll({
+            const tagInstances = await db.Tag.findAll({
                 where: { id: tags }
             });
-            await note.setTags(tagInstances);
+            await note.setTag(tagInstances);
         }
         res.status(201).json({message: 'Note created successfully'})
     } catch (error) {
@@ -48,7 +53,7 @@ router.put('/note/:id', async (req, res)=> {
     const userId = req.user.id;
 
     try {
-        const note =  await Notes.findOne({
+        const note =  await db.Note.findOne({
             where: {id, userId}
         })
 
@@ -59,10 +64,10 @@ router.put('/note/:id', async (req, res)=> {
         note.title = title;
         note.content = content;
         if (tags && tags.length > 0) {
-            const tagInstances = await Tags.findAll({
+            const tagInstances = await db.Tag.findAll({
                 where: {id: tags}
             })
-            await note.setTags(tagInstances)
+            await note.setTag(tagInstances)
         }
         await note.save();
 
@@ -76,7 +81,7 @@ router.delete('/note/:id', async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const note = await Notes.findOne({
+        const note = await db.Note.findOne({
             where: {id, userId}
         })
 
