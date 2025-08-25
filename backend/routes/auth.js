@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 router.post('/sign-up', async (req, res) =>{
-    console.log({req})
     const { email, password } = req.body;
     try{
         const user = await User.create({
@@ -28,13 +27,14 @@ router.post('/login', async (req, res) => {
             return res.status(404).json({message: 'User not found'})
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password)
+        const isPasswordValid = await bcrypt.compare(String(password), user.password)
+ 
         if(!isPasswordValid){
             return res.status(401).json({message: 'Invalid password'})
         }
 
         const token  = jwt.sign({userId: user.id}, process.env.JWT_SECRET, {expiresIn: '1h'})
-        user.lastLogin = newDate();
+        user.lastLogin = new Date();
         await user.save();
         res.status(200).json(token);
     } catch (error){

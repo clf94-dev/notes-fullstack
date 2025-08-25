@@ -23,7 +23,7 @@ await queryInterface.createTable('Users',{
       unique: true
     },
     password: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(60),
       allowNull: false
     },
     colorTheme: {

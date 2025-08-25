@@ -11,8 +11,9 @@ function authMiddleware(req, res, next) {
         res.status(401).json({message: 'Invalid token format'})
     }
 
+
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const payload = jwt.verify(token, process.env.JWT_SECRET);
         req.user = payload;
         next();
     } catch (error){
