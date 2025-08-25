@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 
 router.post('/note', async (req, res) => {
     const { title, content, tags } = req.body;
-    const userId = req.user.id;
+    const userId = req.user.userId;
 
     try {
         const note = await db.Note.create({
@@ -50,7 +50,7 @@ router.post('/note', async (req, res) => {
 router.put('/note/:id', async (req, res)=> {
     const { id } = req.params;
     const { title, content, tags} = req.body;
-    const userId = req.user.id;
+    const userId = req.user.userId;
 
     try {
         const note =  await db.Note.findOne({
@@ -78,7 +78,7 @@ router.put('/note/:id', async (req, res)=> {
 
 router.delete('/note/:id', async (req, res) => {
     const { id } = req.params;
-    const userId = req.user.id;
+    const userId = req.user.userId;
 
     try {
         const note = await db.Note.findOne({
