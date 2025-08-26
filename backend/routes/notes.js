@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
         res.status(200).json(notes)
     } catch (error) {
-        console.error("GET /notes error:", error);
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -42,6 +42,7 @@ router.post('/note', async (req, res) => {
         }
         res.status(201).json({message: 'Note created successfully'})
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -71,6 +72,7 @@ router.put('/note/:id', async (req, res)=> {
         await note.save();
 
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -90,7 +92,8 @@ router.delete('/note/:id', async (req, res) => {
 
         await note.destroy();
         res.status(200).json({message: 'Note deleted successfully'})
-    } catch (error) {
+    } catch (error){
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })

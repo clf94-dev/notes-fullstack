@@ -15,6 +15,7 @@ router.get('/profile', async (req, res) => {
         }
         res.status(200).json(user)
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Interval server error' })
     }
 })
@@ -46,7 +47,7 @@ router.patch('/reset-password', async (req, res) => {
         await user.save();
         res.status(200).json({message: 'Password updated successfully'})
     } catch (error) {
-        console.log({error})
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 

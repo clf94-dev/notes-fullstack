@@ -6,7 +6,7 @@ module.exports = {
         await queryInterface.addColumn('Tags', 'userId',Sequelize.INTEGER)
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     await queryInterface.removeColumn('Tags', 'userId' )
   }
 };

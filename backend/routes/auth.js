@@ -7,14 +7,14 @@ const { User } = require('../models');
 router.post('/sign-up', async (req, res) =>{
     const { email, password } = req.body;
     try{
-        const user = await User.create({
+        await User.create({
             email,
             password,
             username: email.split('@')[0],
         })
         res.status(201).json({message: 'User created successfully'})
     } catch (error){
-        console.error('Error creating user:', error);
+        console.error({error})
         res.status(500).json({message: 'Internal server error'});
     }
 });
@@ -38,6 +38,7 @@ router.post('/login', async (req, res) => {
         await user.save();
         res.status(200).json(token);
     } catch (error){
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })

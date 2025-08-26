@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
         });
         res.status(200).json(tags);
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -39,6 +40,7 @@ router.post('/', async (req, res) => {
        
         res.status(201).json(tag.id)
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
@@ -46,14 +48,12 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     const userId = req.user.userId;
-    console.log({id, userId})
 
     try {
         const tag = await db.Tag.findOne({
             where: {id, userId}
         })
 
-        console.log({tag})
         if(!tag){
             return res.status(404).json({message: 'Tag not found'})
         }
@@ -61,6 +61,7 @@ router.delete('/:id', async (req, res) => {
         await tag.destroy()
         res.status(200).json({message:'Tag deleted successfully'})
     } catch (error) {
+        console.error({error})
         res.status(500).json({message: 'Internal server error'})
     }
 })
