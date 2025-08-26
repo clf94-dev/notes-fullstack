@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import db from '../models/index.js';
 const router = express.Router();
-const db = require('../models');
-const bcrypt = require('bcryptjs')
 
 router.get('/profile', async (req, res) => {
     const userId = req.user.userId;
@@ -53,4 +53,4 @@ router.patch('/reset-password', async (req, res) => {
 
 })
 
-module.exports = router;
+export default router;
