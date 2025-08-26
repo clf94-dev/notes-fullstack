@@ -4,8 +4,6 @@ const db = require('../models');
 
 router.get('/', async (req, res) => {
     const userId = req.user.userId;
-    console.log({req})
-    console.log('get /tags', {userId})
     try {
         const tags = await db.Tag.findAll({
             where: {userId},
@@ -40,6 +38,28 @@ router.post('/', async (req, res) => {
         })
        
         res.status(201).json(tag.id)
+    } catch (error) {
+        res.status(500).json({message: 'Internal server error'})
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    const userId = req.user.userId;
+    console.log({id, userId})
+
+    try {
+        const tag = await db.Tag.findOne({
+            where: {id, userId}
+        })
+
+        console.log({tag})
+        if(!tag){
+            return res.status(404).json({message: 'Tag not found'})
+        }
+
+        await tag.destroy()
+        res.status(200).json({message:'Tag deleted successfully'})
     } catch (error) {
         res.status(500).json({message: 'Internal server error'})
     }
