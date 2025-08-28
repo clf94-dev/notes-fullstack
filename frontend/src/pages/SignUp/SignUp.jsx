@@ -1,15 +1,14 @@
 import React from "react";
 import { Card, Form, Input, Button, Divider, Col, Row, message } from "antd";
-import styles from "./Login.module.css";
+import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { requestLogin } from "@/services/Login";
-
-import Icon from "@ant-design/icons";
+import { requestSignUp } from "@/services/Login";
+import { InfoCircleOutlined } from "@ant-design/icons";
 
 import NotesIcon from "@/assets/notes_logo.svg";
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
@@ -21,14 +20,16 @@ function Login() {
       return;
     }
 
-    requestLogin(values)
-      .then((data) => {
-        localStorage.setItem("token", data);
-        navigate("/home");
+    requestSignUp(values)
+      .then(() => {
+        messageApi.open({
+          content: "Account created successfully",
+          type: "success",
+        });
+        navigate("/login");
       })
       .catch((error) => {
-        console.log({ error });
-        messageApi.error(error || "Login failed");
+        messageApi.error(error || "Account creation failed");
       });
   };
 
@@ -37,8 +38,8 @@ function Login() {
       {contextHolder}
       <Card className={styles.loginCard}>
         <img src={NotesIcon} alt="Notes Logo" className={styles.logo} />
-        <h2 className={styles.welcome}>{t("login.welcome")}</h2>
-        <p className={styles.subtitle}>{t("login.pleaseLogin")}</p>
+        <h2 className={styles.welcome}>{t("signUp.title")}</h2>
+        <p className={styles.subtitle}>{t("signUp.subtitle")}</p>
 
         <Form
           name="login"
@@ -49,14 +50,14 @@ function Login() {
           layout="vertical"
         >
           <Form.Item
-            label={t("login.username")}
+            label={t("signUp.username")}
             name="email"
             className={styles.formItem}
             rules={[
               {
                 required: true,
                 type: "email",
-                message: t("login.emailRequired"),
+                message: t("signUp.emailRequired"),
               },
             ]}
           >
@@ -64,47 +65,50 @@ function Login() {
           </Form.Item>
 
           <Form.Item
-            label={t("login.password")}
+            label={t("signUp.password")}
             name="password"
             className={styles.formItem}
             rules={[
-              { required: true, message: t("login.passwordRequired") },
-              { min: 8, message: t("login.passwordMinLength") },
-              { max: 20, message: t("login.passwordMaxLength") },
+              { required: true, message: t("signUp.passwordRequired") },
+              { min: 8, message: t("signUp.passwordMinLength") },
+              { max: 20, message: t("signUp.passwordMaxLength") },
               {
                 pattern:
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
-                message: t("login.passwordPattern"),
+                message: t("signUp.passwordPattern"),
               },
             ]}
+            extra={
+              <Row gutter={8}>
+                <Col span={1}>
+                  <InfoCircleOutlined className={styles.icon} />
+                </Col>
+                <Col span={23} className={styles.passwordInfo}>
+                  <p>{t("signUp.passwordInfo1")}</p>
+                  <p>{t("signUp.passwordInfo2")}</p>
+                </Col>
+              </Row>
+            }
           >
             <Input.Password />
           </Form.Item>
 
-          <Row justify="end" align={"middle"}>
-            <Col span={12} className={styles.forgotPassword}>
-              <a onClick={() => navigate("/forgot-password")}>
-                {t("login.forgotPass")}
-              </a>
-            </Col>
-          </Row>
-
           <Form.Item label={null}>
             <Button
-              className={styles.btnLogin}
+              className={styles.btnSign}
               type="primary"
               htmlType="submit"
               onClick={form.submit()}
             >
-              {t("login.loginButton")}
+              {t("signUp.signBtn")}
             </Button>
           </Form.Item>
 
           <Divider className={styles.divider} />
           <p className={styles.noAccount}>
-            {t("login.noAccount")}{" "}
-            <a className={styles.signUp} onClick={() => navigate("/sign-up")}>
-              {t("login.signUp")}
+            {t("signUp.haveAccount")}{" "}
+            <a className={styles.signUp} onClick={() => navigate("/login")}>
+              {t("signUp.login")}
             </a>{" "}
           </p>
         </Form>
@@ -113,4 +117,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

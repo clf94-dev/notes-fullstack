@@ -13,5 +13,21 @@
     "passwordMaxLength": "Password must be at most 020 characters",
     "passwordPattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
     "emailRequired": "Please input a correct email"
+  },
+  "signUp": {
+    "title": "Create Your Account",
+    "subtitle": "Sign up to start organizing your notes and boost your productivity.",
+    "username": "Email address",
+    "password": "Password",
+    "signBtn": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "login": "Login",
+    "passwordRequired": "Please input your password!",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordMaxLength": "Password must be at most 020 characters",
+    "passwordPattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+    "emailRequired": "Please input a correct email",
+    "passwordInfo1": "At least 8 characters and at most 20 characters.",
+    "passwordInfo2": "At least one uppercase letter, one lowercase letter, one number"
   }
 }

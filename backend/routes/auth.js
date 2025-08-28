@@ -7,11 +7,19 @@ const router = express.Router();
 router.post("/sign-up", async (req, res) => {
   const { email, password } = req.body;
   try {
+    const user = await db.User.findAll({
+      where: { email, username: email.split("@")[0] },
+    });
+    if (user) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
     await db.User.create({
       email,
       password,
       username: email.split("@")[0],
     });
+
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.error({ error });
@@ -33,7 +41,7 @@ router.post("/login", async (req, res) => {
     );
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid password" });
+      return res.status(401).json({ message: "Invalid password or username" });
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {

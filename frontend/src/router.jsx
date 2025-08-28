@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from "@/pages/Login/Login";
+import SignUp from "@/pages/SignUp/SignUp";
 /* import NotFound from '@/pages/NotFound/NotFound';
  */
 
@@ -10,7 +11,7 @@ function Router() {
       <Routes>
         <Route exact path="/home" element={<div>Home</div>} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/sign-up" element={<SignUp />} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
