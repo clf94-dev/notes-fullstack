@@ -1,0 +1,17 @@
+{
+  "login": {
+    "welcome": "Welcome to Note",
+    "pleaseLogin": "Please login to continue",
+    "username": "Email address",
+    "password": "Password",
+    "loginButton": "Login",
+    "noAccount": "No account yet?",
+    "signUp": "Sign up",
+    "forgotPass": "Forgot password?",
+    "passwordRequired": "Please input your password!",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordMaxLength": "Password must be at most 020 characters",
+    "passwordPattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+    "emailRequired": "Please input a correct email"
+  }
+}

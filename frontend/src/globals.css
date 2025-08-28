@@ -1,7 +1,5 @@
-
-
 :root {
-  --neutral-950: #0E121B;
+  --neutral-950: #0e121b;
   --neutral-900: #191b25;
   --neutral-800: #232530;
   --neutral-700: #2b303b;
@@ -14,15 +12,15 @@
   --neutral-50: #f5f7fa;
   --neutral-0: #ffffff;
 
-  --blue-700: #2547D0;
+  --blue-700: #2547d0;
   --blue-500: #335cff;
   --blue-50: #ebf1ff;
 
-  --green-500: #21C16B;
-  --green-100: #D1FBE9;
+  --green-500: #21c16b;
+  --green-100: #d1fbe9;
 
-  --red-500: #FB3748;
-  --red-100: #FFD5D8;
+  --red-500: #fb3748;
+  --red-100: #ffd5d8;
 
   --radius-0: 0;
   --radius-4: 4px;
@@ -32,12 +30,12 @@
   --radius-12: 12px;
   --radius-16: 16px;
   --radius-20: 20px;
-  --radius-24: 24px; 
+  --radius-24: 24px;
   --radius-full: 100%;
 
-  --font-inter: 'Inter', sans-serif;
-  --font-mono: 'Source Code Pro', monospace;
-  --font-serif: 'Noto Serif', serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "Source Code Pro", monospace;
+  --font-serif: "Noto Serif", serif;
 
   --spacing-0: 0;
   --spacing-025: 2px;
@@ -53,6 +51,18 @@
   --spacing-600: 48px;
   --spacing-800: 64px;
   --spacing-1000: 80px;
+
+  --font-size-1: 24px;
+  --font-size-2: 20px;
+  --font-size-3: 16px;
+  --font-size-4: 14px;
+  --font-size-5: 12px;
+
+  --font-letter-spacing-1: -0.5px;
+  --font-letter-spacing-3: -0.3px;
+  --font-letter-spacing-4: -0.2px;
+
+  --font-line-height: 120%;
 }
 #root {
   width: 100%;
@@ -68,17 +78,18 @@ body {
 
 html,
 body {
-  background: #FFF;
+  background: #fff;
   font-size: 10px;
   padding: 0;
   margin: 0;
-  font-family:var(--font-inter)
+  font-family: var(--font-inter);
 }
 
-body, #root {
+body,
+#root {
   min-height: 100vh;
 }
-.font-bold{
+.font-bold {
   font-weight: bold;
 }
 
@@ -86,4 +97,8 @@ body, #root {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.ant-form-item-label {
+  padding-bottom: 5px !important;
 }

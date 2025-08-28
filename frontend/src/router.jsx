@@ -1,11 +1,6 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
-import Login from '@/pages/Login/Login';
+import Login from "@/pages/Login/Login";
 /* import NotFound from '@/pages/NotFound/NotFound';
  */
 
@@ -13,7 +8,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route exact path="/home" element={<div>Home</div>} />
         <Route path="/login" element={<Login />} />
+
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
