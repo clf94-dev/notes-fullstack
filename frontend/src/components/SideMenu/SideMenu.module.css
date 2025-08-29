@@ -1,0 +1,10 @@
+.sideMenu {
+  height: 100vh;
+  padding-top: 20px;
+
+  border-right: 1px solid var(--gray-200);
+}
+
+.selectedIcon {
+  color: var(--blue-500) !important;
+}

@@ -102,3 +102,12 @@ body,
 .ant-form-item-label {
   padding-bottom: 5px !important;
 }
+
+.ant-menu-light .ant-menu-item-selected {
+  background-color: var(--neutral-100);
+  color: var(--neutral-950);
+}
+
+.ant-menu-item-selected .ant-menu-item-icon {
+  color: var(--blue-500) !important;
+}

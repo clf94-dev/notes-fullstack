@@ -1,8 +1,8 @@
 import { Menu, Row, Col, Tabs } from "antd";
-import Sider from "antd/es/layout/Sider";
 import { Outlet } from "react-router-dom";
 import { MEDIA_QUERIES } from "@/utils/constants";
 import { useMediaQuery } from "@/utils/hooks";
+import SideMenu from "@/components/SideMenu/SideMenu";
 
 function AppLayout() {
   const isTablet = useMediaQuery(MEDIA_QUERIES.tablet);
@@ -11,14 +11,7 @@ function AppLayout() {
     <Row>
       {isDesktop && (
         <Col span={4}>
-          <Sider>
-            <Menu
-              items={[
-                { label: "Notes", key: "notes" },
-                { label: "Settings", key: "settings" },
-              ]}
-            />
-          </Sider>
+          <SideMenu />
         </Col>
       )}
       <Col span={isDesktop ? 20 : 24}>

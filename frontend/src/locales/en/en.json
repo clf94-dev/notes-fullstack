@@ -29,5 +29,10 @@
     "emailRequired": "Please input a correct email",
     "passwordInfo1": "At least 8 characters and at most 20 characters.",
     "passwordInfo2": "At least one uppercase letter, one lowercase letter, one number"
+  },
+  "sideMenu": {
+    "notes": "All Notes",
+    "archivedNotes": "Archived Notes",
+    "tags": "Tags"
   }
 }

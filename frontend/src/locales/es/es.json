@@ -29,5 +29,10 @@
     "emailRequired": "¡Por favor ingrese un correo electrónico correcto!",
     "passwordInfo1": "Al menos 8 caracteres y como máximo 20 caracteres.",
     "passwordInfo2": "Al menos una letra mayúscula, una letra minúscula, un número"
+  },
+  "sideMenu": {
+    "notes": "Todas las Notas",
+    "archivedNotes": "Notas archivadas",
+    "tags": "Etiquetas"
   }
 }

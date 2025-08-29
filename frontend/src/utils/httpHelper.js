@@ -6,6 +6,7 @@ export const makeCall = async (props) => {
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
   };
 
   const options = {
