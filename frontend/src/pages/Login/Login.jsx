@@ -24,7 +24,7 @@ function Login() {
     requestLogin(values)
       .then((data) => {
         localStorage.setItem("token", data);
-        navigate("/home");
+        navigate("/notes");
       })
       .catch((error) => {
         console.log({ error });
