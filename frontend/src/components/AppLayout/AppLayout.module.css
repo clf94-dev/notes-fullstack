@@ -1,0 +1,14 @@
+.appLayout {
+  min-height: 100vh;
+  width: auto;
+  background-color: var(--neutral-200) !important;
+  padding: 0 1px !important;
+  .sideMenuCol {
+    padding: 0 !important;
+  }
+
+  .mainContent {
+    background-color: var(--neutral-200);
+    padding: 0 !important;
+  }
+}

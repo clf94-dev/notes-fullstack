@@ -1,0 +1,35 @@
+.headerContainer {
+  color: var(--neutral-950);
+  background-color: white !important;
+  margin: 0 1px !important;
+  padding: 0 var(--spacing-400);
+}
+
+.actionsCol {
+  padding: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.actionRow {
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  color: var(--neutral-500);
+  height: 40px;
+  font-size: 14px;
+  border-color: var(--neutral-300);
+}
+
+.settingsButton {
+  margin: 4px;
+  font-size: 20px;
+  color: var(--neutral-500);
+  border: none;
+
+  &:hover {
+    color: var(--neutral-600) !important;
+  }
+}

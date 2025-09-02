@@ -3,20 +3,22 @@ import { Outlet } from "react-router-dom";
 import { MEDIA_QUERIES } from "@/utils/constants";
 import { useMediaQuery } from "@/utils/hooks";
 import SideMenu from "@/components/SideMenu/SideMenu";
+import Header from "@/components/Header/Header";
+import styles from "./AppLayout.module.css";
 
 function AppLayout() {
   const isTablet = useMediaQuery(MEDIA_QUERIES.tablet);
   const isDesktop = useMediaQuery(MEDIA_QUERIES.desktop);
   return (
-    <Row>
+    <Row className={styles.appLayout} gutter={16}>
       {isDesktop && (
-        <Col span={4}>
+        <Col span={5} className={styles.sideMenuCol}>
           <SideMenu />
         </Col>
       )}
-      <Col span={isDesktop ? 20 : 24}>
-        <main className="main">
-          <header className="topbar">Welcome!</header>
+      <Col className={styles.mainContent} span={isDesktop ? 19 : 24}>
+        <main>
+          {isDesktop && <Header />}
 
           <div className="content">
             <Outlet />

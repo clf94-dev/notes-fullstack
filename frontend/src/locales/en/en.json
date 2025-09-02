@@ -34,5 +34,13 @@
     "notes": "All Notes",
     "archivedNotes": "Archived Notes",
     "tags": "Tags"
+  },
+  "header": {
+    "notes": "All Notes",
+    "archivedNotes": "Archived Notes",
+    "settings": "Settings",
+    "taggedNotes": "Notes tagged: {{tag}}",
+    "notFound": "Not Found",
+    "searchPlaceholder": "Search by title, content, or tags…"
   }
 }

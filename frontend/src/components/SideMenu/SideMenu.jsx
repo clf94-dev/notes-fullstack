@@ -77,7 +77,7 @@ function SideMenu() {
               alt="Tag"
             />
           ),
-          key: `tag-${tag.id}`,
+          key: `tagged/${tag.name}`,
         })),
       },
     ],

@@ -34,5 +34,13 @@
     "notes": "Todas las Notas",
     "archivedNotes": "Notas archivadas",
     "tags": "Etiquetas"
+  },
+  "header": {
+    "notes": "Todas las Notas",
+    "archivedNotes": "Notas Archivadas",
+    "settings": "Configuración",
+    "taggedNotes": "Notas etiquetadas: {{tag}}",
+    "notFound": "No Encontrado",
+    "searchPlaceholder": "Buscar por título, contenido o etiquetas…"
   }
 }
