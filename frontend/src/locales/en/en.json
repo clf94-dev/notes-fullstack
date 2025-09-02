@@ -42,5 +42,6 @@
     "taggedNotes": "Notes tagged: {{tag}}",
     "notFound": "Not Found",
     "searchPlaceholder": "Search by title, content, or tags…"
-  }
+  },
+  "createBtn": " + Create New Note"
 }

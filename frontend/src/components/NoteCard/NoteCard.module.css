@@ -1,0 +1,21 @@
+.noteCard {
+  padding: 8px 0 8px 0;
+  border-bottom: 1px solid var(--neutral-200);
+  font-family: var(--font-inter) !important;
+
+  .title {
+    margin: 0 !important;
+    font-weight: 600 !important;
+    color: var(--neutral-950);
+  }
+}
+
+.tag {
+  background-color: var(--neutral-200);
+  margin: 12px 8px 8px 0;
+  color: var(--neutral-950);
+}
+
+.date {
+  color: var(--neutral-700);
+}

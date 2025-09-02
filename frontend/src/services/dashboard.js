@@ -7,3 +7,10 @@ export const fetchTagsData = async () => {
     throw error;
   });
 };
+
+export const requestNotes = async () => {
+  console.log("requestNotes");
+  return makeCall({ url: "/api/notes" }).catch((error) => {
+    throw error;
+  });
+};
