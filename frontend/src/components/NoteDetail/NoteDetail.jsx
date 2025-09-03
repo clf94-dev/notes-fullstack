@@ -2,6 +2,8 @@ import { Row, Col, Typography, Divider, Button, Form, message } from "antd";
 import TagIcon from "@/assets/tag.svg";
 import LoadingIcon from "@/assets/loading.svg";
 import CircleClockIcon from "@/assets/circle_clock.svg";
+/* import DeleteIcon from "@/assets/delete_notes.svg";
+import ArchiveIcon from "@/assets/archive_notes.svg"; */
 import styles from "./NoteDetail.module.css";
 import TextArea from "antd/es/input/TextArea";
 import { requestEditNote } from "@/services/dashboard";
@@ -41,7 +43,7 @@ function NoteDetail({ note }) {
   return (
     <Row gutter={16}>
       {contextHolder}
-      <div className={styles.noteDetail}>
+      <Col span={24} className={styles.noteDetail}>
         <Title level={3}>{note.title}</Title>
 
         <Row
@@ -133,7 +135,7 @@ function NoteDetail({ note }) {
             </Button>
           </Col>
         </Row>
-      </div>
+      </Col>
     </Row>
   );
 }

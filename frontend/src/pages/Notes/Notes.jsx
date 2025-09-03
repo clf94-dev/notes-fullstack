@@ -30,7 +30,7 @@ function Notes() {
     <div>
       {contextHolder}
       <Row className={styles.notesPage} gutter={16}>
-        <Col span={8} className={styles.notesList}>
+        <Col span={6} className={styles.notesList}>
           <Button className={styles.createNoteBtn}>{t("createBtn")}</Button>
 
           <Row>
@@ -47,9 +47,27 @@ function Notes() {
             )}
           </Row>
         </Col>
-        <Col span={16} className={styles.noteDetail}>
-          {selectedNote ? <NoteDetail note={selectedNote} /> : null}
-        </Col>
+        {selectedNote ? (
+          <>
+            <Col span={14} className={styles.noteDetail}>
+              {selectedNote ? <NoteDetail note={selectedNote} /> : null}
+            </Col>
+            <Col span={4} className={styles.actionsCol}>
+              <Button
+                className={styles.archiveButton}
+                onClick={() => handleArchive(selectedNote.id)}
+              >
+                Archive Note
+              </Button>
+              <Button
+                className={styles.deleteButton}
+                onClick={() => handleDelete(selectedNote.id)}
+              >
+                Delete Note
+              </Button>
+            </Col>
+          </>
+        ) : null}
       </Row>
     </div>
   );
