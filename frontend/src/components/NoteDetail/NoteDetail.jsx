@@ -6,6 +6,7 @@ import styles from "./NoteDetail.module.css";
 import TextArea from "antd/es/input/TextArea";
 import { requestEditNote } from "@/services/dashboard";
 import moment from "moment";
+import { useEffect } from "react";
 
 const { Title, Text } = Typography;
 
@@ -29,6 +30,12 @@ function NoteDetail({ note }) {
   const handleCancel = () => {
     form.setFieldValue("content", note.content);
   };
+
+  useEffect(() => {
+    form.setFieldsValue({
+      content: note.content,
+    });
+  }, [note]);
 
   console.log({ note });
   return (

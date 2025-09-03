@@ -38,7 +38,7 @@ function Notes() {
               notesList.map((note) => (
                 <NoteCard
                   note={note}
-                  onSelect={setSelectedNote}
+                  setSelectedNote={setSelectedNote}
                   selectedNote={selectedNote}
                 />
               ))

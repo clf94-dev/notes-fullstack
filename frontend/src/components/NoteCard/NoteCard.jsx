@@ -4,9 +4,15 @@ import styles from "./NoteCard.module.css";
 
 const { Title, Text } = Typography;
 
-export default function NoteCard({ note }) {
+export default function NoteCard({ note, setSelectedNote, selectedNote }) {
   return (
-    <div key={note.id} className={styles.noteCard}>
+    <div
+      key={note.id}
+      className={`${styles.noteCard} ${
+        selectedNote?.id === note.id ? styles.selected : ""
+      }`}
+      onClick={() => setSelectedNote(note)}
+    >
       <Title level={5} className={styles.title}>
         {note.title}
       </Title>
