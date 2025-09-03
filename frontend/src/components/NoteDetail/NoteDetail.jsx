@@ -1,21 +1,39 @@
-import { Row, Col, Typography, Divider, Button, Form } from "antd";
+import { Row, Col, Typography, Divider, Button, Form, message } from "antd";
 import TagIcon from "@/assets/tag.svg";
 import LoadingIcon from "@/assets/loading.svg";
 import CircleClockIcon from "@/assets/circle_clock.svg";
 import styles from "./NoteDetail.module.css";
 import TextArea from "antd/es/input/TextArea";
+import { requestEditNote } from "@/services/dashboard";
 import moment from "moment";
 
 const { Title, Text } = Typography;
 
 function NoteDetail({ note }) {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
 
   const handleFinish = (values) => {
     console.log("Form values:", values);
+
+    requestEditNote(note.id, values)
+      .then(() => {
+        messageApi.success("Note updated successfully");
+      })
+      .catch((error) => {
+        messageApi.error("Failed to update note");
+        console.error("Error updating note:", error);
+      });
   };
+
+  const handleCancel = () => {
+    form.setFieldValue("content", note.content);
+  };
+
+  console.log({ note });
   return (
     <Row gutter={16}>
+      {contextHolder}
       <div className={styles.noteDetail}>
         <Title level={3}>{note.title}</Title>
 
@@ -103,7 +121,9 @@ function NoteDetail({ note }) {
             </Button>
           </Col>
           <Col span={4}>
-            <Button className={styles.cancelButton}>Cancel</Button>
+            <Button className={styles.cancelButton} onClick={handleCancel}>
+              Cancel
+            </Button>
           </Col>
         </Row>
       </div>

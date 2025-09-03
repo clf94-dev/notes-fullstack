@@ -14,3 +14,13 @@ export const requestNotes = async () => {
     throw error;
   });
 };
+
+export const requestEditNote = async (noteId, data) => {
+  return makeCall({
+    url: `/api/notes/${noteId}`,
+    method: "PUT",
+    body: data,
+  }).catch((error) => {
+    throw error;
+  });
+};
