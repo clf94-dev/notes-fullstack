@@ -1,22 +1,23 @@
-import { Row, Col, Button, Card, Typography, Tag, message } from "antd";
+import { Row, Col, Button, message } from "antd";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { requestNotes } from "@/services/dashboard";
 import styles from "./Notes.module.css";
 
+import NoteDetail from "@/components/NoteDetail/NoteDetail";
 import NoteCard from "@/components/NoteCard/NoteCard";
-
-const { Title, Text } = Typography;
 
 function Notes() {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [notesList, setNotesList] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
 
   useEffect(() => {
     requestNotes()
       .then((data) => {
         setNotesList(data);
+        setSelectedNote(data[0] || null);
       })
       .catch((error) => {
         message.error(error);
@@ -34,21 +35,20 @@ function Notes() {
 
           <Row>
             {notesList.length ? (
-              notesList.map((note) => <NoteCard note={note} />)
+              notesList.map((note) => (
+                <NoteCard
+                  note={note}
+                  onSelect={setSelectedNote}
+                  selectedNote={selectedNote}
+                />
+              ))
             ) : (
               <div>No notes found</div>
             )}
           </Row>
         </Col>
         <Col span={16} className={styles.noteDetail}>
-          <Row gutter={16}>
-            <div> Note detail</div>
-            {/* {notes.map((note) => (
-              <Col span={8} key={note.id}>
-                <NoteCard note={note} />
-              </Col>
-            ))} */}
-          </Row>
+          {selectedNote ? <NoteDetail note={selectedNote} /> : null}
         </Col>
       </Row>
     </div>

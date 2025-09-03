@@ -1,0 +1,34 @@
+.noteDetail {
+  padding: 16px;
+  background: #fff;
+  height: 92vh !important;
+
+  .noteDetailRow {
+    margin-bottom: 8px;
+    font-size: var(--font-size-5) !important;
+
+    .detailIcon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .saveButton {
+    background-color: var(--blue-500);
+    color: white;
+    height: 40px;
+    width: 100%;
+    font-size: var(--font-size-4);
+
+    font-weight: 500;
+    font-family: var(--font-inter);
+  }
+
+  .cancelButton {
+    background-color: var(--gray-300);
+    height: 40px;
+    width: 100%;
+    font-size: var(--font-size-4);
+    font-family: var(--font-inter);
+  }
+}
