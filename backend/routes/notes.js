@@ -79,6 +79,50 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.patch("/:id/archive", async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.userId;
+
+  try {
+    const note = await db.Note.findOne({
+      where: { id, userId },
+    });
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    note.status = "archived";
+    await note.save();
+    res.status(200).json({ message: "Note archived successfully" });
+  } catch (error) {
+    console.error({ error });
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.patch("/:id/restore", async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.userId;
+
+  try {
+    const note = await db.Note.findOne({
+      where: { id, userId },
+    });
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    note.status = "active";
+    await note.save();
+    res.status(200).json({ message: "Note archived successfully" });
+  } catch (error) {
+    console.error({ error });
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const userId = req.user.userId;

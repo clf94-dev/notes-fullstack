@@ -24,3 +24,30 @@ export const requestEditNote = async (noteId, data) => {
     throw error;
   });
 };
+
+export const requestArchiveNote = async (noteId) => {
+  return makeCall({
+    url: `/api/notes/${noteId}/archive`,
+    method: "PATCH",
+  }).catch((error) => {
+    throw error;
+  });
+};
+
+export const requestRestoreNote = async (noteId) => {
+  return makeCall({
+    url: `/api/notes/${noteId}/restore`,
+    method: "PATCH",
+  }).catch((error) => {
+    throw error;
+  });
+};
+
+export const requestDeleteNote = async (noteId) => {
+  return makeCall({
+    url: `/api/notes/${noteId}`,
+    method: "DELETE",
+  }).catch((error) => {
+    throw error;
+  });
+};
