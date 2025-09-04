@@ -55,10 +55,10 @@ function NoteDetail({ note }) {
           <Col span={6}>
             <Row>
               {" "}
-              <Col span={4}>
+              <Col span={5}>
                 <img src={TagIcon} alt="Tag" className={styles.detailIcon} />
               </Col>
-              <Col span={20}>
+              <Col span={19}>
                 <Text>Tags</Text>
               </Col>
             </Row>
@@ -72,14 +72,14 @@ function NoteDetail({ note }) {
           <Col span={6}>
             <Row gutter={[8, 16]} align="center">
               {" "}
-              <Col span={4}>
+              <Col span={5}>
                 <img
                   src={LoadingIcon}
                   alt="Status"
                   className={styles.detailIcon}
                 />
               </Col>
-              <Col span={20}>
+              <Col span={19}>
                 <Text> Status</Text>
               </Col>
             </Row>
@@ -93,14 +93,14 @@ function NoteDetail({ note }) {
           <Col span={6}>
             <Row>
               {" "}
-              <Col span={4}>
+              <Col span={5}>
                 <img
                   src={CircleClockIcon}
                   alt="Last Edited"
                   className={styles.detailIcon}
                 />
               </Col>
-              <Col span={20}>
+              <Col span={19}>
                 <Text>Last Edited</Text>
               </Col>
             </Row>
@@ -117,19 +117,19 @@ function NoteDetail({ note }) {
               variant="borderless"
               defaultValue={note.content}
               value={note.content}
-              autoSize={{ minRows: 17, maxRows: 17 }}
+              autoSize={{ minRows: 19, maxRows: 19 }}
             />
           </Form.Item>
         </Form>
 
         <Divider />
         <Row gutter={[8, 16]}>
-          <Col span={4}>
+          <Col span={6}>
             <Button className={styles.saveButton} onClick={() => form.submit()}>
               Save Note
             </Button>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Button className={styles.cancelButton} onClick={handleCancel}>
               Cancel
             </Button>

@@ -1,10 +1,11 @@
 .noteCard {
-  padding: 8px 0 8px 8px;
+  padding: 8px 0 8px 12px;
   border-bottom: 1px solid var(--neutral-200);
   font-family: var(--font-inter) !important;
 
   &.selected {
     background-color: var(--neutral-100);
+    border-radius: 5px;
   }
   .title {
     margin: 0 !important;
@@ -15,7 +16,7 @@
 
 .tag {
   background-color: var(--neutral-200);
-  margin: 12px 8px 8px 0;
+  margin: 12px 6px 8px 4px;
   color: var(--neutral-950);
 }
 
