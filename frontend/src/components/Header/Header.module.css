@@ -32,4 +32,9 @@
   &:hover {
     color: var(--neutral-600) !important;
   }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }

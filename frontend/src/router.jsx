@@ -5,7 +5,7 @@ import SignUp from "@/pages/SignUp/SignUp";
 import RequireAuth from "@/components/RequireAuth/RequireAuth";
 import AppLayout from "@/components/AppLayout/AppLayout";
 import Notes from "@/pages/Notes/Notes";
-import Archive from "@/pages/Archive/Archive";
+import Settings from "@/pages/Settings/Settings";
 /* import NotFound from '@/pages/NotFound/NotFound';
  */
 
@@ -26,6 +26,7 @@ function Router() {
           <Route path="/notes" element={<Notes />}></Route>
           <Route path="/tagged/:id" element={<Notes />} />
           <Route path="/archive" element={<Notes />} />
+          <Route path="/settings" element={<Settings />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
         </Route>

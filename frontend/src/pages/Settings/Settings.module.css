@@ -1,0 +1,19 @@
+.settingsPage {
+  margin-left: 20px;
+  position: relative;
+  left: 8px;
+  height: 92vh;
+}
+
+.settingsList {
+  padding: 12px 24px !important;
+  background-color: white;
+  height: 100%;
+  border-right: 1px solid var(--neutral-200);
+}
+
+.settingDetail {
+  padding: 0 24px !important;
+  background-color: white !important;
+  border-right: 1px solid var(--neutral-200);
+}

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { Row, Col, Button, Input } from "antd";
 import styles from "./Header.module.css";
@@ -9,6 +9,7 @@ const { Search } = Input;
 
 function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const headerText = useMemo(() => {
@@ -60,7 +61,11 @@ function Header() {
             />
           </Col>
           <Col span={2}>
-            <Button type="text" className={styles.settingsButton}>
+            <Button
+              type="text"
+              className={styles.settingsButton}
+              onClick={() => navigate("/settings")}
+            >
               <SettingOutlined />
             </Button>
           </Col>
