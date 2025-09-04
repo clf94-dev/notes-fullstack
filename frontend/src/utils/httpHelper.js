@@ -17,6 +17,12 @@ export const makeCall = async (props) => {
 
   try {
     const response = await fetch(`${API_URL}${url}`, options);
+
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.reload();
+      return;
+    }
     return handleTypeResponse(response);
   } catch (error) {
     console.log({ error });
