@@ -11,18 +11,28 @@ import styles from "./Notes.module.css";
 
 import NoteDetail from "@/components/NoteDetail/NoteDetail";
 import NoteCard from "@/components/NoteCard/NoteCard";
+import { useLocation } from "react-router-dom";
+
+const { Text } = Typography;
 
 function Notes() {
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
   const [notesList, setNotesList] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const location = useLocation();
 
   const requestNotesList = () => {
     requestNotes()
       .then((data) => {
+        if (location.pathname === "/archive") {
+          const filtered = data.filter((note) => note.status === "archived");
+          setNotesList(filtered);
+          setSelectedNote(filtered[0] || null);
+        } else {
         setNotesList(data);
         setSelectedNote(data[0] || null);
+        }
       })
       .catch((error) => {
         message.error(error);
@@ -31,7 +41,7 @@ function Notes() {
 
   useEffect(() => {
     requestNotesList();
-  }, []);
+  }, [location]);
 
   const handleUnarchive = (id) => {
     requestRestoreNote(id)
@@ -78,6 +88,12 @@ function Notes() {
         <Col span={6} className={styles.notesList}>
           <Button className={styles.createNoteBtn}>{t("createBtn")}</Button>
 
+          {location.pathname === "/archive" ? (
+            <Text>
+              All your archived notes are stored here. You can restore or delete
+              them anytime.
+            </Text>
+          ) : null}
           <Row>
             {notesList.length ? (
               notesList.map((note) => (

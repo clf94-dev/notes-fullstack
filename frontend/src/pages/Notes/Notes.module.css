@@ -8,6 +8,7 @@
 .notesList {
   padding: 12px 24px !important;
   background-color: white;
+  height: 100%;
   border-right: 1px solid var(--neutral-200);
 
   .createNoteBtn {
@@ -24,7 +25,7 @@
 
 .noteDetail {
   padding: 0 24px !important;
-  background-color: white;
+  background-color: white !important;
   border-right: 1px solid var(--neutral-200);
 }
 

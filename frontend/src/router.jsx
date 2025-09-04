@@ -25,7 +25,7 @@ function Router() {
         >
           <Route path="/notes" element={<Notes />}></Route>
           <Route path="/tagged/:id" element={<Notes />} />
-          <Route path="/archive" element={<Archive />} />
+          <Route path="/archive" element={<Notes />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
         </Route>
