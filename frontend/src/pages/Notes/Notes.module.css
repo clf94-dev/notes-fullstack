@@ -3,6 +3,11 @@
   position: relative;
   left: 8px;
   height: 92vh;
+
+  .emptyDetailCol {
+    background-color: white !important;
+    padding: 29%;
+  }
 }
 
 .notesList {

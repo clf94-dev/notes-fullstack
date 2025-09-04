@@ -1,4 +1,4 @@
-import { Row, Col, Button, message } from "antd";
+import { Row, Col, Button, message, Typography, Empty } from "antd";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -104,7 +104,18 @@ function Notes() {
                 />
               ))
             ) : (
-              <div>No notes found</div>
+              <Row
+                align="center"
+                justify="space-between"
+                className={styles.emptyState}
+              >
+                <Col>
+                  <Empty
+                    description="No notes found"
+                    image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  />
+                </Col>
+              </Row>
             )}
           </Row>
         </Col>
@@ -137,7 +148,14 @@ function Notes() {
               </Button>
             </Col>
           </>
-        ) : null}
+        ) : (
+          <Col span={18} className={styles.emptyDetailCol}>
+            <Empty
+              description="No notes found"
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+            />
+          </Col>
+        )}
       </Row>
     </div>
   );
