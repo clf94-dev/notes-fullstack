@@ -12,7 +12,7 @@ import NotesIcon from "@/assets/notes_logo.svg";
 import styles from "./SideMenu.module.css";
 import { useTranslation } from "react-i18next";
 
-function SideMenu() {
+function SideMenu({ setCurrentTag }) {
   const [currentKey, setCurrentKey] = useState("notes");
   const { t } = useTranslation();
   const [tagsList, setTagsList] = useState([]);
@@ -20,7 +20,13 @@ function SideMenu() {
 
   const handleMenuChange = (item) => {
     setCurrentKey(item.key);
+
+    if (item.keyPath?.length > 1 && item.keyPath[1] === "tags") {
+      setCurrentTag(item.keyPath[0].split("/")[1]);
+    } else {
     navigate(`/${item.key}`);
+setCurrentTag(null);
+    }
   };
 
   useEffect(() => {

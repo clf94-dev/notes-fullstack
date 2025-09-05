@@ -8,6 +8,7 @@ import {
   requestRestoreNote,
 } from "@/services/dashboard";
 import styles from "./Notes.module.css";
+import { useOutletContext } from "react-router";
 
 import NoteDetail from "@/components/NoteDetail/NoteDetail";
 import NoteCard from "@/components/NoteCard/NoteCard";
@@ -21,6 +22,7 @@ function Notes() {
   const [notesList, setNotesList] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const location = useLocation();
+  const { currentTag } = useOutletContext();
 
   const requestNotesList = () => {
     requestNotes()
