@@ -4,10 +4,28 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const userId = req.user.userId;
+  const { string } = req.query;
+
   try {
+    const where = {};
+    if (string) {
+      where[db.Sequelize.Op.or] = [
+        { title: { [db.Sequelize.Op.iLike]: `%${string}%` } },
+        { content: { [db.Sequelize.Op.iLike]: `%${string}%` } },
+        { "$filterTags.name$": { [db.Sequelize.Op.iLike]: `%${string}%` } },
+      ];
+    }
+
     const notes = await db.Note.findAll({
-      where: { userId },
+      where: { userId, ...where },
       include: [
+        {
+          model: db.Tag,
+          as: "filterTags",
+          attributes: [],
+          required: !!string,
+          through: { attributes: [] }, // Exclude junction table attributes
+        },
         {
           model: db.Tag,
           as: "tags",
