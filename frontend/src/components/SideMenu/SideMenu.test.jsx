@@ -1,14 +1,11 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { navigateMock } from "@/tests/mocks/router";
+import { i18nMock } from "@/tests/mocks/i18n";
 import { BrowserRouter } from "react-router-dom";
+import { fetchTagsData } from "@/services/dashboard";
 import SideMenu from "./SideMenu";
 import { vi } from "vitest";
 import { message } from "antd";
-
-// Mock i18n: return key as label so tests don't depend on translations
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key) => key }),
-}));
 
 // Mock service that fetches tags
 vi.mock("@/services/dashboard", () => ({
@@ -29,7 +26,6 @@ describe("SideMenu", () => {
   });
 
   it("renders static menu items", async () => {
-    const { fetchTagsData } = await import("@/services/dashboard");
     fetchTagsData.mockResolvedValueOnce([]); // no tags
 
     renderWithRouter(<SideMenu />);
@@ -44,7 +40,6 @@ describe("SideMenu", () => {
   });
 
   it("fetches and displays tags", async () => {
-    const { fetchTagsData } = await import("@/services/dashboard");
     fetchTagsData.mockResolvedValueOnce([
       { id: 1, name: "Work" },
       { id: 2, name: "Personal" },
@@ -59,7 +54,6 @@ describe("SideMenu", () => {
   });
 
   it("shows an error when fetch fails", async () => {
-    const { fetchTagsData } = await import("@/services/dashboard");
     fetchTagsData.mockRejectedValueOnce("Network error");
 
     renderWithRouter(<SideMenu />);
@@ -70,7 +64,6 @@ describe("SideMenu", () => {
   });
 
   it("navigates when clicking a menu item", async () => {
-    const { fetchTagsData } = await import("@/services/dashboard");
     fetchTagsData.mockResolvedValueOnce([]);
 
     renderWithRouter(<SideMenu />);
