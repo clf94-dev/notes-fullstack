@@ -1,13 +1,16 @@
 import { Button, Row, Col, Radio, Card } from "antd";
+import React from "react";
 import LightModeIcon from "@/assets/light_mode.svg";
 import DarkModeIcon from "@/assets/dark_mode.svg";
 import SystemModeIcon from "@/assets/system_mode.svg";
 import styles from "./ColorTheme.module.css";
 import { useTranslation } from "react-i18next";
+import SettingsOption from "@/components/common/SettingsOption/SettingsOption";
 import { useMemo } from "react";
 
 function ColorTheme() {
   const { t } = useTranslation();
+  const [currentTheme, setCurrentTheme] = React.useState("light");
   const colorThemeItems = useMemo(() => {
     return [
       {
@@ -44,29 +47,13 @@ function ColorTheme() {
         </span>
       </Col>
       <Col span={24}>
-        <Radio.Group>
+        <Radio.Group value={currentTheme} className={styles.radioGroup}>
           {colorThemeItems.map((item) => (
-            <Card key={item.key} className={styles.optionCard}>
-              <Row justify="space-between" align="middle">
-                <Col span={1}>
-                  <div className={styles.iconContainer}>
-                    <img
-                      src={item.icon}
-                      alt={item.imageAlt}
-                      className={styles.themeIcon}
-                    />
-                  </div>
-                </Col>
-                <Col span={19}>
-                  <h4 className={styles.themeTitle}>{item.label}</h4>
-                  <p className={styles.themeDescription}>{item.description}</p>
-                </Col>
-
-                <Col span={1} className={styles.radioCol}>
-                  <Radio value={item.key}></Radio>
-                </Col>
-              </Row>
-            </Card>
+            <SettingsOption
+              key={item.key}
+              item={item}
+              onSelect={() => setCurrentTheme(item.key)}
+            />
           ))}
         </Radio.Group>
       </Col>
