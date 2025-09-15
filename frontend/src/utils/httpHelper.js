@@ -1,7 +1,7 @@
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 export const makeCall = async (props) => {
-  const { url, body, method } = props;
+  const { url, body, method, params } = props;
 
   const headers = {
     "Content-Type": "application/json",
@@ -16,7 +16,10 @@ export const makeCall = async (props) => {
   };
 
   try {
-    const response = await fetch(`${API_URL}${url}`, options);
+    const response = await fetch(
+      `${API_URL}${url}${params ? `?${new URLSearchParams(params)}` : ""}`,
+      options
+    );
 
     if (response.status === 401) {
       localStorage.removeItem("token");

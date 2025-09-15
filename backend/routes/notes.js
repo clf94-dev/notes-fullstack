@@ -4,16 +4,19 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const userId = req.user.userId;
-  const { string } = req.query;
+  const { search, tag } = req.query;
 
   try {
     const where = {};
-    if (string) {
+    if (search) {
       where[db.Sequelize.Op.or] = [
-        { title: { [db.Sequelize.Op.iLike]: `%${string}%` } },
-        { content: { [db.Sequelize.Op.iLike]: `%${string}%` } },
-        { "$filterTags.name$": { [db.Sequelize.Op.iLike]: `%${string}%` } },
+        { title: { [db.Sequelize.Op.iLike]: `%${search}%` } },
+        { content: { [db.Sequelize.Op.iLike]: `%${search}%` } },
       ];
+    }
+
+    if (tag) {
+      where["$filterTags.name$"] = tag;
     }
 
     const notes = await db.Note.findAll({
@@ -23,7 +26,7 @@ router.get("/", async (req, res) => {
           model: db.Tag,
           as: "filterTags",
           attributes: [],
-          required: !!string,
+          required: !!search,
           through: { attributes: [] }, // Exclude junction table attributes
         },
         {

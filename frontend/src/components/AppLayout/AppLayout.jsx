@@ -12,6 +12,7 @@ function AppLayout() {
   const isDesktop = useMediaQuery(MEDIA_QUERIES.desktop);
 
   const [currentTag, setCurrentTag] = useState(null);
+  const [currentSearchString, setCurrentSearchString] = useState("");
 
   return (
     <Row className={styles.appLayout} gutter={16}>
@@ -22,10 +23,12 @@ function AppLayout() {
       )}
       <Col className={styles.mainContent} span={isDesktop ? 19 : 24}>
         <main>
-          {isDesktop && <Header />}
+          {isDesktop && (
+            <Header setCurrentSearchString={setCurrentSearchString} />
+          )}
 
           <div className="content">
-            <Outlet context={{ currentTag }} />
+            <Outlet context={{ currentTag, currentSearchString }} />
           </div>
         </main>
       </Col>

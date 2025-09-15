@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const { Search } = Input;
 
-function Header() {
+function Header({ setCurrentSearchString }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -32,7 +32,9 @@ function Header() {
     }
   }, [location]);
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    setCurrentSearchString(value);
+  };
 
   console.log({ location, headerText });
 
@@ -57,7 +59,7 @@ function Header() {
               className={styles.searchInput}
               prefix={<SearchOutlined />}
               placeholder={t("header.searchPlaceholder")}
-              onSearch={onSearch}
+              onPressEnter={(e) => onSearch(e.target.value)}
             />
           </Col>
           <Col span={2}>

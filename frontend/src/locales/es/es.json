@@ -41,7 +41,7 @@
     "settings": "Configuración",
     "taggedNotes": "Notas etiquetadas: {{tag}}",
     "notFound": "No Encontrado",
-    "searchPlaceholder": "Buscar por título, contenido o etiquetas…"
+    "searchPlaceholder": "Buscar por título o contenido"
   },
   "createBtn": " + Crear Nueva Nota"
 }

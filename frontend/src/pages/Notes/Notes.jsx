@@ -22,18 +22,28 @@ function Notes() {
   const [notesList, setNotesList] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const location = useLocation();
-  const { currentTag } = useOutletContext();
+  const { currentTag, currentSearchString } = useOutletContext();
 
   const requestNotesList = () => {
-    requestNotes()
+    console.log("requestNotesList");
+
+    let params = currentTag ? `?tag=${currentTag}` : "";
+    console.log({ currentSearchString });
+    if (currentSearchString) {
+      params += params
+        ? `&search=${currentSearchString}`
+        : `?search=${currentSearchString}`;
+    }
+    console.log({ params });
+    requestNotes({ params })
       .then((data) => {
         if (location.pathname === "/archive") {
           const filtered = data.filter((note) => note.status === "archived");
           setNotesList(filtered);
           setSelectedNote(filtered[0] || null);
         } else {
-        setNotesList(data);
-        setSelectedNote(data[0] || null);
+          setNotesList(data);
+          setSelectedNote(data[0] || null);
         }
       })
       .catch((error) => {
@@ -43,7 +53,7 @@ function Notes() {
 
   useEffect(() => {
     requestNotesList();
-  }, [location]);
+  }, [location, currentTag, currentSearchString]);
 
   const handleUnarchive = (id) => {
     requestRestoreNote(id)
@@ -81,7 +91,7 @@ function Notes() {
       });
   };
 
-  console.log({ notesList });
+  console.log({ notesList, location });
 
   return (
     <div>

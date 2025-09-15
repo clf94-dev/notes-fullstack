@@ -8,9 +8,9 @@ export const fetchTagsData = async () => {
   });
 };
 
-export const requestNotes = async () => {
-  console.log("requestNotes");
-  return makeCall({ url: "/api/notes" }).catch((error) => {
+export const requestNotes = async ({ params }) => {
+  console.log("requestNotes", { params });
+  return makeCall({ url: "/api/notes", params }).catch((error) => {
     throw error;
   });
 };
