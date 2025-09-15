@@ -3,6 +3,11 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ColorTheme from "@/components/ColorTheme/ColorTheme";
 import FontTheme from "@/components/FontTheme/FontTheme";
+import ColorIcon from "@/assets/light_mode.svg";
+import FontIcon from "@/assets/type.svg";
+import LanguageIcon from "@/assets/type.svg";
+import PasswordIcon from "@/assets/lock.svg";
+import LogoutIcon from "@/assets/logout.svg";
 
 import styles from "./Settings.module.css";
 
@@ -15,22 +20,50 @@ function Settings() {
     return [
       {
         key: "color",
-        label: t("settings.color.menu"),
+        label: (
+          <div className={styles.settingsLabel}>
+            <img src={ColorIcon} alt="color icon" className={styles.icon} />
+            {t("settings.color.menu")}
+          </div>
+        ),
         children: <ColorTheme />,
       },
       {
         key: "font",
-        label: t("settings.font.menu"),
+        label: (
+          <div className={styles.settingsLabel}>
+            <img src={FontIcon} alt="font icon" className={styles.icon} />
+            {t("settings.font.menu")}
+          </div>
+        ),
         children: <FontTheme />,
       },
       {
         key: "language",
-        label: t("settings.language"),
+        label: (
+          <div className={styles.settingsLabel}>
+            <img
+              src={LanguageIcon}
+              alt="language icon"
+              className={styles.icon}
+            />
+            {t("settings.language")}
+          </div>
+        ),
         children: <div> language theme</div>,
       },
       {
         key: "password",
-        label: t("settings.password"),
+        label: (
+          <div className={styles.settingsLabel}>
+            <img
+              src={PasswordIcon}
+              alt="password icon"
+              className={styles.icon}
+            />
+            {t("settings.password")}
+          </div>
+        ),
         children: <div> change password</div>,
       },
     ];
@@ -39,28 +72,37 @@ function Settings() {
   return (
     <div>
       {contextHolder}
-      <Row className={styles.settingsPage} gutter={16}>
+      <Row className={styles.settingsPage} gutter={16} justify="start">
         <Col span={6} className={styles.settingsList}>
           <Row>
             {settingsMenu.map((item) => (
               <Col key={item.key} span={24}>
                 <Button
                   type="text"
-                  className={styles.settingsButton}
+                  className={`styles.settingsButton ${
+                    selectedTab === item.key ? styles.activeButton : ""
+                  }`}
+                  block
                   onClick={() => setSelectedTab(item.key)}
                 >
                   {item.label}
                 </Button>
               </Col>
             ))}
-            <Divider />
+            <Divider className={styles.divider} />
 
             <Col span={24}>
               <Button
                 type="text"
-                className={styles.loginButton}
+                block
+                className={styles.logoutButton}
                 onClick={() => console.log("Logout clicked")}
               >
+                <img
+                  src={LogoutIcon}
+                  alt="logout icon"
+                  className={styles.icon}
+                />
                 {t("settings.logout")}
               </Button>
             </Col>
