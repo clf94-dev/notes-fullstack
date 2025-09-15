@@ -48,7 +48,6 @@
     "title": "Configuración",
     "language": "Idioma",
     "password": "Contraseña",
-    "font": "Fuente",
     "light": "Claro",
     "dark": "Oscuro",
     "system": "Sistema",
@@ -63,6 +62,17 @@
       "darkDescription": "Selecciona un tema oscuro elegante y moderno.",
       "system": "Sistema",
       "systemDescription": "Se adapta al tema de tu dispositivo "
+    },
+    "font": {
+      "menu": "Tema de Fuente",
+      "title": "Configuración del Tema de Fuente",
+      "description": "Elige tu tema de fuente:",
+      "sans-serif": "Sans Serif",
+      "sans-serifDescription": "Limpio y moderno, fácil de leer.",
+      "serif": "Serif",
+      "serifDescription": "Clásico y elegante para una sensación atemporal.",
+      "monospace": "Monospace",
+      "monospaceDescription": "De tipo monoespaciado, ideal para notas técnicas."
     }
   }
 }

@@ -2,12 +2,9 @@ import { Row, Col, Button, message, Typography, Divider } from "antd";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ColorTheme from "@/components/ColorTheme/ColorTheme";
+import FontTheme from "@/components/FontTheme/FontTheme";
 
 import styles from "./Settings.module.css";
-
-import { useLocation } from "react-router-dom";
-
-const { Text } = Typography;
 
 function Settings() {
   const { t } = useTranslation();
@@ -23,8 +20,8 @@ function Settings() {
       },
       {
         key: "font",
-        label: t("settings.font"),
-        children: <div> font theme</div>,
+        label: t("settings.font.menu"),
+        children: <FontTheme />,
       },
       {
         key: "language",

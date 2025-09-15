@@ -48,7 +48,6 @@
     "title": "Settings",
     "language": "Language",
     "password": "Password",
-    "font": "Font",
     "light": "Light",
     "dark": "Dark",
     "system": "System",
@@ -63,6 +62,17 @@
       "darkDescription": "Select a sleek and modern dark theme.",
       "system": "System ",
       "systemDescription": "Adapts to your device's theme"
+    },
+    "font": {
+      "menu": "Font Theme",
+      "title": "Font Theme Settings",
+      "description": "Choose your font theme:",
+      "sans-serif": "Sans Serif",
+      "sans-serifDescription": "Clean and modern, easy to read.",
+      "serif": "Serif",
+      "serifDescription": "Classic and elegant for a timeless feel.",
+      "monospace": "Monospace",
+      "monospaceDescription": "Code-like, great for a technical vibe."
     }
   }
 }
