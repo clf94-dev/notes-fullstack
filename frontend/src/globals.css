@@ -75,6 +75,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+* {
+  font-family: var(--font-inter);
+}
 
 html,
 body {
@@ -129,4 +132,14 @@ body,
 .ant-layout-sider {
   min-width: 100% !important;
   background-color: var(--neutral-200);
+}
+
+.ant-btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.ant-btn:hover {
+  border: none !important;
 }

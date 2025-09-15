@@ -9,11 +9,14 @@ export const makeCall = async (props) => {
     Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
   };
 
+  console.log({ params });
   const options = {
     method: method || "GET",
     headers,
     body: JSON.stringify(body),
   };
+
+  console.log({ options, url, API_URL });
 
   try {
     const response = await fetch(
