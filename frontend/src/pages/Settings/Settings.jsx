@@ -1,4 +1,4 @@
-import { Row, Col, Button, message, Typography, Divider } from "antd";
+import { Row, Col, Button, message, Divider } from "antd";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ColorTheme from "@/components/ColorTheme/ColorTheme";
@@ -69,6 +69,11 @@ function Settings() {
     ];
   }, [t]);
 
+  const handleLougout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <div>
       {contextHolder}
@@ -96,7 +101,7 @@ function Settings() {
                 type="text"
                 block
                 className={styles.logoutButton}
-                onClick={() => console.log("Logout clicked")}
+                onClick={handleLougout}
               >
                 <img
                   src={LogoutIcon}
