@@ -1,6 +1,7 @@
 import { Row, Col, Button, message, Typography, Divider } from "antd";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import ColorTheme from "@/components/ColorTheme/ColorTheme";
 
 import styles from "./Settings.module.css";
 
@@ -17,8 +18,8 @@ function Settings() {
     return [
       {
         key: "color",
-        label: t("settings.color"),
-        children: <div> color theme</div>,
+        label: t("settings.color.menu"),
+        children: <ColorTheme />,
       },
       {
         key: "font",

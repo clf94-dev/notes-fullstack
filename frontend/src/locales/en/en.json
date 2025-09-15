@@ -43,5 +43,26 @@
     "notFound": "Not Found",
     "searchPlaceholder": "Search by title or content"
   },
-  "createBtn": " + Create New Note"
+  "createBtn": " + Create New Note",
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "password": "Password",
+    "font": "Font",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "logout": "Logout",
+    "color": {
+      "menu": "Color Theme",
+      "title": "Color Theme Settings",
+      "description": "Choose your color theme:",
+      "light": "Light Mode",
+      "lightDescription": "Pick a clean and classic light theme",
+      "dark": "Dark Mode",
+      "darkDescription": "Select a sleek and modern dark theme.",
+      "system": "System ",
+      "systemDescription": "Adapts to your device's theme"
+    }
+  }
 }

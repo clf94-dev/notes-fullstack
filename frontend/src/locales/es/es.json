@@ -43,5 +43,26 @@
     "notFound": "No Encontrado",
     "searchPlaceholder": "Buscar por título o contenido"
   },
-  "createBtn": " + Crear Nueva Nota"
+  "createBtn": " + Crear Nueva Nota",
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "password": "Contraseña",
+    "font": "Fuente",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "logout": "Cerrar sesión",
+    "color": {
+      "menu": "Tema de Color",
+      "title": "Configuración del Tema de Color",
+      "description": "Elige tu tema de color:",
+      "light": "Modo Claro",
+      "lightDescription": "Elige un tema claro y clásico",
+      "dark": "Modo Oscuro",
+      "darkDescription": "Selecciona un tema oscuro elegante y moderno.",
+      "system": "Sistema",
+      "systemDescription": "Se adapta al tema de tu dispositivo "
+    }
+  }
 }
