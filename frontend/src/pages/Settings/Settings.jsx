@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ColorTheme from "@/components/ColorTheme/ColorTheme";
 import FontTheme from "@/components/FontTheme/FontTheme";
+import ChangePassword from "@/components/ChangePassword/ChangePassword";
 import ColorIcon from "@/assets/light_mode.svg";
 import FontIcon from "@/assets/type.svg";
 import LanguageIcon from "@/assets/type.svg";
@@ -64,7 +65,7 @@ function Settings() {
             {t("settings.password")}
           </div>
         ),
-        children: <div> change password</div>,
+        children: <ChangePassword />,
       },
     ];
   }, [t]);
