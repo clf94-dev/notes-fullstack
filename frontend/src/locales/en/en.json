@@ -73,6 +73,27 @@
       "serifDescription": "Classic and elegant for a timeless feel.",
       "monospace": "Monospace",
       "monospaceDescription": "Code-like, great for a technical vibe."
+    },
+    "changePassword": {
+      "menu": "Change Password",
+      "title": "Change Your Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updateButton": "Update Password",
+      "confirmNewPassword": "Please input your new password!",
+      "passwordRequired": "Please input your password!",
+      "newPasswordRequired": "Please input your new password!",
+      "confirmPasswordRequired": "Please confirm your new password!",
+      "passwordMismatch": "The two passwords that you entered do not match!",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordMaxLength": "Password must be at most 20 characters",
+      "passwordPattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "updateSuccess": "Password updated successfully!",
+      "updateFailed": "Failed to update password. Please try again.",
+      "sameAsOld": "New password cannot be the same as the old password",
+      "invalidOldPassword": "The old password is incorrect",
+      "submitButton": "Update Password"
     }
   }
 }

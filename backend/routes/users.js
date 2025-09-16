@@ -36,7 +36,7 @@ router.patch("/reset-password", async (req, res) => {
     );
 
     if (!isOldPasswordValid) {
-      return res.status(400).json({ message: "Old password is incorrect" });
+      return res.status(400).json({ message: "invalidOldPassword" });
     }
 
     const isSameNewPassord = await bcrypt.compare(
@@ -45,7 +45,7 @@ router.patch("/reset-password", async (req, res) => {
     );
     if (isSameNewPassord) {
       return res.status(400).json({
-        message: "New password cannot be the same as the old password",
+        message: "sameAsOld",
       });
     }
 
