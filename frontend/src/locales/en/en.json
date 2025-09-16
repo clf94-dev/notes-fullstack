@@ -46,7 +46,6 @@
   "createBtn": " + Create New Note",
   "settings": {
     "title": "Settings",
-    "language": "Language",
     "password": "Password",
     "light": "Light",
     "dark": "Dark",
@@ -94,6 +93,12 @@
       "sameAsOld": "New password cannot be the same as the old password",
       "invalidOldPassword": "The old password is incorrect",
       "submitButton": "Update Password"
+    },
+    "language": {
+      "menu": "Language",
+      "title": "Language Settings",
+      "english": "English",
+      "spanish": "Spanish"
     }
   }
 }

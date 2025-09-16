@@ -143,3 +143,7 @@ body,
 .ant-btn:hover {
   border: none !important;
 }
+
+.ant-switch {
+  outline: none !important;
+}

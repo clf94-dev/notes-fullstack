@@ -46,7 +46,6 @@
   "createBtn": " + Crear Nueva Nota",
   "settings": {
     "title": "Configuración",
-    "language": "Idioma",
     "password": "Contraseña",
     "light": "Claro",
     "dark": "Oscuro",
@@ -94,6 +93,12 @@
       "sameAsOld": "La nueva contraseña no puede ser la misma que la antigua",
       "invalidOldPassword": "La contraseña antigua no es correcta",
       "submitButton": "Actualizar Contraseña"
+    },
+    "language": {
+      "menu": "Idioma",
+      "title": "Configuración de Idioma",
+      "english": "Inglés",
+      "spanish": "Español"
     }
   }
 }

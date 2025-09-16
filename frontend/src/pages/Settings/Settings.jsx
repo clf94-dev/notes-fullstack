@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import ColorTheme from "@/components/ColorTheme/ColorTheme";
 import FontTheme from "@/components/FontTheme/FontTheme";
 import ChangePassword from "@/components/ChangePassword/ChangePassword";
+import LanguageMenu from "@/components/LanguageMenu/LanguageMenu";
+
 import ColorIcon from "@/assets/light_mode.svg";
 import FontIcon from "@/assets/type.svg";
 import LanguageIcon from "@/assets/type.svg";
@@ -48,10 +50,10 @@ function Settings() {
               alt="language icon"
               className={styles.icon}
             />
-            {t("settings.language")}
+            {t("settings.language.menu")}
           </div>
         ),
-        children: <div> language theme</div>,
+        children: <LanguageMenu />,
       },
       {
         key: "password",
